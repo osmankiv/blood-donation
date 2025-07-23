@@ -1,0 +1,90 @@
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #fff9f5;
+    color: #333;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.hero {
+    background: linear-gradient(135deg, #ffe8e8, #fff9f5);
+    padding: 5rem 0;
+    position: relative;
+}
+
+.hero h1 {
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: #b71c1c;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-red {
+    background-color: #d64545;
+    color: white;
+    padding: 0.7rem 2rem;
+}
+
+.btn-red:hover {
+    background-color: #bb3a3a;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: #d64545;
+}
+
+.stats-box,
+.testimonial-box {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #d64545;
+}
+
+.call-to-action {
+    background: #d64545;
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.call-to-action h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-box {
+    border-left: 5px solid #d64545;
+}
+
+footer {
+    background-color: #2d2d2d;
+    color: #eee;
+    padding: 2rem 0;
+}
+
+footer a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    color: white;
+}

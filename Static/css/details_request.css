@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to bottom, #fff4f4, #fbe9e9);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #d62828;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.info-row {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.value {
+    color: #222;
+    font-size: 17px;
+}
+
+.value i {
+    color: #e63946;
+    margin-left: 6px;
+}
+
+.btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-yes {
+    background-color: #d62828;
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #b71c1c;
+}
+
+.btn-no {
+    background-color: #ddd;
+    color: #333;
+}
+
+.btn-no:hover {
+    background-color: #c4c4c4;
+}
+
+@media (max-width: 600px) {
+    .btns {
+        flex-direction: column;
+    }
+}

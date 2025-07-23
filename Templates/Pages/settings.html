@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>الإعدادات</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../Static/css/settings.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center">⚙️ إعدادات الحساب</h2>
+
+    <div class="card">
+      <h5>تغيير كلمة المرور</h5>
+      <form>
+        <div class="mb-3">
+          <label>كلمة المرور الحالية</label>
+          <input type="password" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label>كلمة المرور الجديدة</label>
+          <input type="password" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label>تأكيد كلمة المرور الجديدة</label>
+          <input type="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-save">💾 حفظ التغيير</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h5>❌ حذف الحساب</h5>
+      <p>بمجرد حذف الحساب لا يمكن استعادته. يرجى التأكيد قبل الإجراء.</p>
+      <button class="btn btn-outline-danger">حذف الحساب نهائيًا</button>
+    </div>
+  </div>
+</body>
+
+</html>

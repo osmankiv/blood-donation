@@ -1,0 +1,34 @@
+body {
+    background-color: #f9f9f9;
+    font-family: 'Cairo', sans-serif;
+}
+
+.search-box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.result-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.03);
+}
+
+.result-card h5 {
+    color: #d62828;
+}
+
+.btn-details {
+    background-color: #d62828;
+    color: white;
+}
+
+.btn-details:hover {
+    background-color: #b71c1c;
+}
