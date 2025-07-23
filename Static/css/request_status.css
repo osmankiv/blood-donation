@@ -1,0 +1,35 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f5f5f5;
+    padding: 30px 15px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.status-badge {
+    background-color: #e7f5e8;
+    color: #2f8f2f;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table thead {
+    background-color: #f9f9f9;
+}
+
+.btn-red {
+    background-color: #d62828;
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #b71c1c;
+}

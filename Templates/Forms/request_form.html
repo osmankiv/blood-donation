@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>طلب تبرع</title>
+    <link rel="stylesheet" href="../../Static/css/request_form.css">
+
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>طلب تبرع بالدم</h2>
+        <form>
+            <label>اسم المستشفى</label>
+            <input type="text" required>
+
+            <label>المدينة</label>
+            <input type="text" required>
+
+            <label>فصيلة الدم المطلوبة</label>
+            <select required>
+                <option>اختر</option>
+                <option>+A</option>
+                <option>-A</option>
+                <option>+B</option>
+                <option>-B</option>
+                <option>+O</option>
+                <option>-O</option>
+                <option>+AB</option>
+                <option>-AB</option>
+            </select>
+
+            <label>عدد الأكياس</label>
+            <input type="number" required>
+
+            <label>رقم التواصل</label>
+            <input type="tel" required>
+
+            <label>ملاحظات إضافية</label>
+            <textarea rows="3"></textarea>
+
+            <button type="submit">إرسال الطلب</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
