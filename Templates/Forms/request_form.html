@@ -7,44 +7,65 @@
     <link rel="stylesheet" href="../../Static/css/request_form.css">
 
 </head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>طلب تبرع</title>
+        <link rel="stylesheet" href="../../Static/css/request_form.css">
+    </head>
 
-    <div class="form-container">
-        <h2>طلب تبرع بالدم</h2>
-        <form>
-            <label>اسم المستشفى</label>
-            <input type="text" required>
+    <body>
 
-            <label>المدينة</label>
-            <input type="text" required>
+        <div class="form-container">
+            <h2>طلب تبرع بالدم</h2>
 
-            <label>فصيلة الدم المطلوبة</label>
-            <select required>
-                <option>اختر</option>
-                <option>+A</option>
-                <option>-A</option>
-                <option>+B</option>
-                <option>-B</option>
-                <option>+O</option>
-                <option>-O</option>
-                <option>+AB</option>
-                <option>-AB</option>
-            </select>
+            <form method="post" action="submit_request.php">
+                <label>اسم المستشفى</label>
+                <input type="text" name="hospital_name" required>
 
-            <label>عدد الأكياس</label>
-            <input type="number" required>
+                <label>المدينة</label>
+                <input type="text" name="city" required>
 
-            <label>رقم التواصل</label>
-            <input type="tel" required>
+                <label>فصيلة الدم المطلوبة</label>
+                <select name="blood_type" required>
+                    <option value="">اختر</option>
+                    <option value="+A">+A</option>
+                    <option value="-A">-A</option>
+                    <option value="+B">+B</option>
+                    <option value="-B">-B</option>
+                    <option value="+O">+O</option>
+                    <option value="-O">-O</option>
+                    <option value="+AB">+AB</option>
+                    <option value="-AB">-AB</option>
+                </select>
 
-            <label>ملاحظات إضافية</label>
-            <textarea rows="3"></textarea>
+                <label>عدد الأكياس</label>
+                <input type="number" name="bags" min="1" required>
 
-            <button type="submit">إرسال الطلب</button>
-        </form>
-    </div>
+                <label>رقم التواصل</label>
+                <input type="tel" name="contact_number" pattern="[0-9+]{7,15}" required>
+                <!-- <label>تاريخ الحاجة للتبرع</label>
+                <input type="date" name="donation_date" required> -->
+                <label class="form-label">الحالة</label>
+                <select name="urgency" class="form-select">
+                    <option value="">اختر الحالة</option>
+                    <option value="طارئة" <?= $status == "طارئة" ? "selected" : "" ?>>طارئة</option>
+                    <option value="عادية" <?= $status == "عادية" ? "selected" : "" ?>>عادية</option>
+                </select>
+                
 
-</body>
+
+                <label>ملاحظات إضافية</label>
+                <textarea name="notes" rows="3"></textarea>
+
+                <button type="submit">إرسال الطلب</button>
+            </form>
+        </div>
+
+    </body>
+
+
 
 </html>

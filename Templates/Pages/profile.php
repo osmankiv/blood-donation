@@ -4,7 +4,7 @@ require_once '../../Core/db.php';
 
 // التأكد من تسجيل الدخول
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../login.html");
+    header("Location: ../Forms/login.html");
     exit;
 }
 
@@ -37,7 +37,7 @@ $stmt->close();
       <a href="../../home.html">🏠 الرئيسية</a>
       <a href="../Forms/request_form.html">➕ طلب دم</a>
       <a href="#" onclick="toggleDarkMode()">🌓 الوضع الليلي</a>
-      <a href="../../logout.php">🚪 تسجيل الخروج</a>
+      <a href="../../public/logout.php">🚪 تسجيل الخروج</a>
     </div>
 
     <div class="container">
@@ -72,19 +72,21 @@ $stmt->close();
             </div>
             <div class="col-md-6">
               <label>فصيلة الدم</label>
-               <select required>
-                <option>اختر</option>
-                <option>+A</option>
-                <option>-A</option>
-                <option>+B</option>
-                <option>-B</option>
-                <option>+O</option>
-                <option>-O</option>
-                <option>+AB</option>
-                <option>-AB</option>
-            </select>
-              <input type="text" name="blood_type" class="readonly-input" value="<?=$blood_type ? htmlspecialchars($blood_type) : "غير محددة"?>"
-                >
+
+  <select name="blood_type" class="form-select readonly-input" aria-label="فصيلة الدم" onchange="this.previousElementSibling.value = this.value">
+    <option value=""  <?= $blood_type ? '' : 'selected' ?>>اختر فصيلة الدم</option>
+    <option value="+A" <?= $blood_type == '+A' ? 'selected' : '' ?>>+A</option>
+    <option value="-A" <?= $blood_type == '-A' ? 'selected' : '' ?>>-A</option>
+    <option value="+B" <?= $blood_type == '+B' ? 'selected' : '' ?>>+B</option>
+    <option value="-B" <?= $blood_type == '-B' ? 'selected' : '' ?>>-B</option>
+    <option value="+O" <?= $blood_type == '+O' ? 'selected' : '' ?>>+O</option>
+    <option value="-O" <?= $blood_type == '-O' ? 'selected' : '' ?>>-O</option>
+    <option value="+AB" <?= $blood_type == '+AB' ? 'selected' : '' ?>>+AB</option>
+    <option value="-AB" <?= $blood_type == '-AB' ? 'selected' : '' ?>>-AB</option>
+  </select>
+</div>
+
+
             </div>
           </div>
           <button type="button" class="edit-btn" onclick="enableEditing()">✏️ تعديل المعلومات</button>
