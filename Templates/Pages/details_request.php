@@ -1,15 +1,15 @@
 <?php
-// الاتصال بقاعدة البيانات
+session_start();
 require_once '../../Core/db.php';
 
-// التحقق من وجود id
+
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die('رقم الطلب غير صالح');
 }
 
 $request_id = intval($_GET['id']);
 
-// جلب البيانات من قاعدة البيانات
+
 $stmt = $conn->prepare("SELECT * FROM blood_requests WHERE id = ?");
 $stmt->bind_param("i", $request_id);
 $stmt->execute();
@@ -20,6 +20,37 @@ if ($result->num_rows === 0) {
 }
 
 $request = $result->fetch_assoc();
+
+// /////////////////////
+
+
+
+// تأكد من أن المستخدم مسجل دخول
+if (!isset($_SESSION['user_id'])) {
+    die('يجب تسجيل الدخول أولاً');
+}
+
+$user_id = $_SESSION['user_id'];
+$request_id = $_GET['id'];
+$confirmation_message = '';
+if(isset($_POST['will_boold'])){
+    // التحقق من التسجيل المسبق
+    $check = $conn->prepare("SELECT * FROM donations WHERE user_id = ? AND request_id = ?");
+    $check->bind_param("ii", $user_id, $request_id);
+    $check->execute();
+    $result = $check->get_result();
+
+    if ($result->num_rows === 0) {
+        $stmt = $conn->prepare("INSERT INTO donations (user_id, request_id, status) VALUES (?, ?, 'pending')");
+        $stmt->bind_param("ii", $user_id, $request_id);
+        $stmt->execute();
+        $confirmation_message = "✅ تم تسجيل استعدادك للتبرع. شكرًا لإنسانيتك ❤️";
+    } else {
+        $confirmation_message = "⚠️ لقد سجلت تبرعك مسبقًا.";
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -151,20 +182,24 @@ $request = $result->fetch_assoc();
         </div>
 
         <div class="btns">
-            <button class="btn btn-yes" onclick="confirmDonation()"><i class="fas fa-hand-holding-medical me-1"></i> سأتبرع</button>
+          <form method="POST" style="display:inline;">
+    <input type="hidden" name="will_boold" value="1">
+    <button class="btn btn-yes" type="submit">
+        <i class="fas fa-hand-holding-medical me-1"></i> سأتبرع
+    </button>
+</form>
+
             <button class="btn btn-no" onclick="alert('شكرًا لك! نتمنى مشاركتك في المستقبل.')"><i class="fas fa-times-circle me-1"></i> لا أستطيع الآن</button>
         </div>
 
         <div class="confirmation" id="confirmationMessage">
-            ✅ تم تسجيل استعدادك للتبرع. شكرًا لإنسانيتك ❤️
+            <?php if (!empty($confirmation_message)) {
+                echo $confirmation_message;
+            } ?>
         </div>
     </div>
 
-    <script>
-        function confirmDonation() {
-            document.getElementById('confirmationMessage').style.display = 'block';
-        }
-    </script>
+ 
 
 </body>
 
