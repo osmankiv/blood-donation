@@ -21,23 +21,27 @@ $stmt->close();
 
 ////////////////
 // جلب تبرعات المستخدم
-$query2 = "SELECT request_id, donated_at, status FROM donations WHERE user_id = ?";
+$donations = [];
 
-$stmt2 = $conn->prepare($query2);
-$stmt2->bind_param("i", $user_id);
-$stmt2->execute();
-$stmt2->bind_result($request_id, $donated_at, $status);
-$stmt2->fetch();
-$stmt2->close();
+$query = "
+    SELECT d.donated_at, d.status, r.hospital_name
+    FROM donations d
+    JOIN blood_requests r ON d.request_id = r.id
+    WHERE d.user_id = ?
+    ORDER BY d.donated_at DESC
+";
 
-$query2 = "SELECT hospital_name status FROM blood_requests WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$stmt2 = $conn->prepare($query2);
-$stmt2->bind_param("i", $request_id);
-$stmt2->execute();
-$stmt2->bind_result($hospital_name);
-$stmt2->fetch();
-$stmt2->close();
+while ($row = $result->fetch_assoc()) {
+    $donations[] = $row;
+}
+
+$stmt->close();
+
 
 
 
@@ -57,7 +61,7 @@ $stmt2->close();
   <body>
 
     <div class="nav-links">
-      <a href="../../home.html">🏠 الرئيسية</a>
+      <a href="../../index.php">🏠 الرئيسية</a>
       <a href="../Forms/request_form.html">➕ طلب دم</a>
       <a href="#" onclick="toggleDarkMode()">🌓 الوضع الليلي</a>
       <a href="../../public/logout.php">🚪 تسجيل الخروج</a>
@@ -140,9 +144,23 @@ $stmt2->close();
       <div class="card">
         <h4>💉 سجل التبرعات</h4>
         <ul>
-          <li>تبرعت بتاريخ<?= $donated_at ?> في مستشفى <?= $hospital_name ?></li>
-          <li>تبرعت بتاريخ 10 مايو 2024 لمريض في مستشفى الشعب</li>
-          <li>تبرعت بتاريخ 15 فبراير 2024 في مركز أمبدة</li>
+          <ul>
+  <?php if (empty($donations)): ?>
+    <li>لا توجد تبرعات مسجلة حتى الآن.</li>
+  <?php else: ?>
+    <?php foreach ($donations as $donation): ?>
+      <li>
+        <?= date('d-m-Y', strtotime($donation['donated_at'])) ?>
+        في مستشفى <?= htmlspecialchars($donation['hospital_name']) ?>
+        - الحالة: 
+        <strong class="<?= $donation['status'] == 'completed' ? 'text-success' : 'text-warning' ?>">
+          <?= $donation['status'] == 'completed' ? 'تم التبرع' : 'قيد الانتظار' ?>
+        </strong>
+      </li>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</ul>
+
         </ul>
       </div>
 
