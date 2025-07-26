@@ -18,6 +18,29 @@ $stmt->execute();
 $stmt->bind_result($name, $phone, $city, $blood_type, $lastDonation, $points);
 $stmt->fetch();
 $stmt->close();
+
+////////////////
+// جلب تبرعات المستخدم
+$query2 = "SELECT request_id, donated_at, status FROM donations WHERE user_id = ?";
+
+$stmt2 = $conn->prepare($query2);
+$stmt2->bind_param("i", $user_id);
+$stmt2->execute();
+$stmt2->bind_result($request_id, $donated_at, $status);
+$stmt2->fetch();
+$stmt2->close();
+
+$query2 = "SELECT hospital_name status FROM blood_requests WHERE id = ?";
+
+$stmt2 = $conn->prepare($query2);
+$stmt2->bind_param("i", $request_id);
+$stmt2->execute();
+$stmt2->bind_result($hospital_name);
+$stmt2->fetch();
+$stmt2->close();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -117,6 +140,7 @@ $stmt->close();
       <div class="card">
         <h4>💉 سجل التبرعات</h4>
         <ul>
+          <li>تبرعت بتاريخ<?= $donated_at ?> في مستشفى <?= $hospital_name ?></li>
           <li>تبرعت بتاريخ 10 مايو 2024 لمريض في مستشفى الشعب</li>
           <li>تبرعت بتاريخ 15 فبراير 2024 في مركز أمبدة</li>
         </ul>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 26 يوليو 2025 الساعة 17:46
+-- Generation Time: 26 يوليو 2025 الساعة 18:14
 -- إصدار الخادم: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `city`, `blood_type`, `last_donation_date`, `points`, `created_at`) VALUES
-(1, 'osman', 'osman@gmail.com', '0999553493', '$2y$10$F2n9.G1Q1LElc2d4wlRsWuIxlBnAMAEBsa6rdu3jsP6F7VHoZyThu', 'khko', '-AB', NULL, 270, '2025-07-23 13:25:36');
+(1, 'osman', 'osman@gmail.com', '0999553493', '$2y$10$F2n9.G1Q1LElc2d4wlRsWuIxlBnAMAEBsa6rdu3jsP6F7VHoZyThu', 'khko', '+O', NULL, 270, '2025-07-23 13:25:36');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
