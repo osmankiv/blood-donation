@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 24 يوليو 2025 الساعة 17:38
+-- Generation Time: 26 يوليو 2025 الساعة 17:46
 -- إصدار الخادم: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `blood_requests` (
   `urgency` varchar(255) NOT NULL,
   `request_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `blood_requests`
@@ -47,7 +47,35 @@ CREATE TABLE IF NOT EXISTS `blood_requests` (
 
 INSERT INTO `blood_requests` (`id`, `hospital_name`, `city`, `blood_type`, `bags`, `contact_number`, `notes`, `urgency`, `request_date`) VALUES
 (1, 'المنوره', 'الخرطوم', '+O', 1, '0999553493', 'شكرا', '', '2025-07-24 16:59:41'),
-(3, 'التركي', 'الخرطوم', '-AB', 3, '091236574', '', 'عاديه', '2025-07-24 17:22:28');
+(3, 'التركي', 'الخرطوم', '-AB', 3, '091236574', '', 'عاديه', '2025-07-24 17:22:28'),
+(4, 'jghjghjg', 'hgjhg', '+AB', 15, '097686756', 'ghj', 'طارئة', '2025-07-26 17:40:24');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `donations`
+--
+
+DROP TABLE IF EXISTS `donations`;
+CREATE TABLE IF NOT EXISTS `donations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `request_id` int NOT NULL,
+  `donated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `status` enum('pending','confirmed','cancelled') DEFAULT 'pending',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `request_id` (`request_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `donations`
+--
+
+INSERT INTO `donations` (`id`, `user_id`, `request_id`, `donated_at`, `status`) VALUES
+(4, 1, 3, '2025-07-25 18:11:41', 'pending'),
+(5, 1, 1, '2025-07-25 18:13:52', 'pending'),
+(6, 1, 4, '2025-07-26 19:40:57', 'pending');
 
 -- --------------------------------------------------------
 
@@ -77,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `password`, `city`, `blood_type`, `last_donation_date`, `points`, `created_at`) VALUES
-(1, 'osman', 'osman@gmail.com', '0999553493', '$2y$10$F2n9.G1Q1LElc2d4wlRsWuIxlBnAMAEBsa6rdu3jsP6F7VHoZyThu', 'khko', '-A', NULL, 270, '2025-07-23 13:25:36');
+(1, 'osman', 'osman@gmail.com', '0999553493', '$2y$10$F2n9.G1Q1LElc2d4wlRsWuIxlBnAMAEBsa6rdu3jsP6F7VHoZyThu', 'khko', '-AB', NULL, 270, '2025-07-23 13:25:36');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
