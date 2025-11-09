@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,20 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/Static/css/home.css">
-
 </head>
-
 <body>
-
-
-
   <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container">
       <a class="navbar-brand text-danger fw-bold" href="#">قطرة حياة</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
           <li class="nav-item"><a class="nav-link active text-danger" href="#">الرئيسية</a></li>
@@ -30,18 +23,14 @@
           <li class="nav-item"><a class="nav-link" href="Templates/Pages/profile.php">لوحة المستخدم</a></li>
           <li class="nav-item"><a class="nav-link" href="#">تواصل معنا</a></li>
         </ul>
-
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
           <li class="nav-item dropdown">
             <a class="nav-link position-relative" href="#" id="notifDropdown" data-bs-toggle="dropdown"
               aria-expanded="false">
               <i class="fas fa-bell fa-lg"></i>
-
               <span
                 class="position-absolute top-0 start-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
             </a>
-        
-
             <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
               <li class="dropdown-item text-danger fw-bold">
                 🚨 حالة طارئة لفصيلة دمك +O في مستشفى أحمد قاسم
@@ -69,7 +58,6 @@
       </div>
     </div>
     </nav>
-    
 
   <section class="hero">
     <div class="container">

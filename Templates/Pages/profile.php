@@ -60,12 +60,7 @@ $stmt->close();
 
   <body>
 
-    <div class="nav-links">
-      <a href="../../index.php">🏠 الرئيسية</a>
-      <a href="../Forms/request_form.html">➕ طلب دم</a>
-      <a href="#" onclick="toggleDarkMode()">🌓 الوضع الليلي</a>
-      <a href="../../public/logout.php">🚪 تسجيل الخروج</a>
-    </div>
+    <?php include "../../public/header.php"?>
 
     <div class="container">
       <h2 class="text-center">👤 الملف الشخصي</h2>
