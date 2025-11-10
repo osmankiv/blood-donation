@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+session_start();
+require_once 'Core/db.php';
+if(isset($_SESSION['user_id'])){
+$user_id = $_SESSION['user_id'];
+$notifs = [];
+
+if ($user_id) {
+  $stmt = $conn->prepare("SELECT message, hospital, created_at FROM notifications WHERE user_id = ? ORDER BY created_at DESC LIMIT 5");
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $notifs = $result->fetch_all(MYSQLI_ASSOC);
+}
+}
+?><!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -32,15 +47,34 @@
                 class="position-absolute top-0 start-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
-              <li class="dropdown-item text-danger fw-bold">
-                🚨 حالة طارئة لفصيلة دمك +O في مستشفى أحمد قاسم
-                <br><small><a href="تفاصيل-الطلب.html">عرض التفاصيل</a></small>
-              </li>
+              <?php foreach($notifs as $notif){ 
+                echo"<li class='dropdown-item text-danger fw-bold'
+                🚨 ".$notif."
+                <br><small><a href='تفاصيل-الطلب.html'>عرض التفاصيل</a></small>
+              </li>";
+              }
+                ?>
+              
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li class="dropdown-item text-muted">لا توجد إشعارات جديدة</li>
             </ul>
+        
+
+           <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
+  <?php if (!empty($notifs)): ?>
+    <?php foreach ($notifs as $n): ?>
+      <li class="dropdown-item text-danger fw-bold">
+        <?= htmlspecialchars($n['message']) ?><br>
+        <small><?= htmlspecialchars($n['hospital']) ?> - <?= date('Y-m-d H:i', strtotime($n['created_at'])) ?></small>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <li class="dropdown-item text-muted">لا توجد إشعارات جديدة</li>
+  <?php endif; ?>
+</ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown">
