@@ -37,7 +37,7 @@ if ($user_id) {
           <li class="nav-item"><a class="nav-link active text-danger" href="#">الرئيسية</a></li>
           <li class="nav-item"><a class="nav-link" href="Templates/Pages/search_request.php">البحث عن الطلبات</a></li>
           <li class="nav-item"><a class="nav-link" href="Templates/Pages/profile.php">لوحة المستخدم</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">تواصل معنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://wa.me/249999501483?text=مرحبًا، أحتاج إلى دعم فني" ">تواصل معنا</a></li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
           <li class="nav-item dropdown">
@@ -69,7 +69,8 @@ if ($user_id) {
             </a>
             <ul class="dropdown-menu text-end">
               <li><a class="dropdown-item" href="Templates/Pages/search_request.php"><i class="fas fa-hand-holding-medical me-2"></i>تبرع الآن</a></li>
-              <li><a class="dropdown-item" href="Templates/Forms/donor_form.php"><i class="fas fa-file-medical me-2"></i>طلب دم</a></li>
+              <li><a class="dropdown-item" href="Templates/Forms/donor_form.php
+              "><i class="fas fa-file-medical me-2"></i>طلب دم</a></li>
             </ul>
           </li>
           <li class="nav-item">
