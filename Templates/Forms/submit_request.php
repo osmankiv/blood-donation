@@ -24,9 +24,9 @@ if ($bags <= 0) {
     $errors[] = "عدد الأكياس يجب أن يكون رقمًا موجبًا.";
 }
 
-if (!preg_match('/^0\d{8}$/', $contact_number)) {
-    $errors[] = "رقم التواصل غير صحيح. يجب أن يبدأ بـ 0 ويتكون من 10 أرقام.";
-}
+//if (!preg_match('/^0\d{8}$/', $contact_number)) {
+ //   $errors[] = "رقم التواصل غير صحيح. يجب أن يبدأ بـ 0 ويتكون من 10 أرقام.";
+//}
 
 if (empty($errors)) {
    $sql = "INSERT INTO blood_requests (hospital_name, city, blood_type, bags, contact_number, notes, urgency)
@@ -37,7 +37,7 @@ $stmt->bind_param("sssisss", $hospital_name, $city, $blood_type, $bags, $contact
 
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "تم إرسال طلب التبرع بنجاح!";
-        header("Location: request_form.html?success=1");
+        header("Location: request_form.php?success=1");
         exit;
     } else {
         $errors[] = "حدث خطأ أثناء إرسال الطلب: " . $stmt->error;

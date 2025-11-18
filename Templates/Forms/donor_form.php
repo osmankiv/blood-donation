@@ -1,3 +1,6 @@
+<?php 
+include"../../public/header.php";
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 

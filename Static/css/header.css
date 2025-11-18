@@ -1,0 +1,23 @@
+.nav-links {
+    position:relative;
+    display: block;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20%;
+
+}
+
+.nav-links a {
+    color: #d62828;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid #d62828;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #d62828;
+    color: white;
+}

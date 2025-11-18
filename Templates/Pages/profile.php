@@ -21,8 +21,9 @@ $stmt->close();
 
 ////////////////
 // جلب تبرعات المستخدم
-$donations = [];
 
+
+$donations = [];
 $query = "
     SELECT d.donated_at, d.status, r.hospital_name
     FROM donations d
@@ -42,10 +43,13 @@ while ($row = $result->fetch_assoc()) {
 
 $stmt->close();
 
+$blood_requests= "SELECT id, hospital_name, city, blood_type, bags, contact_number, notes, urgency from blood_requests  WHERE id = ?";
+$result_blood_requests=$conn->prepare($blood_requests);
 
 
 
 ?>
+<?php include "../../public/header.php"?>
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -60,7 +64,7 @@ $stmt->close();
 
   <body>
 
-    <?php include "../../public/header.php"?>
+    
 
     <div class="container">
       <h2 class="text-center">👤 الملف الشخصي</h2>
@@ -127,12 +131,9 @@ $stmt->close();
       <div class="card">
         <h4>📋 سجل الطلبات</h4>
         <div class="info-row">
-          <span>#4923 - مستشفى أحمد قاسم - بحري</span>
-          <span class="text-success">تم التبرع</span>
-        </div>
-        <div class="info-row">
-          <span>#4902 - مركز الهلال - أمدرمان</span>
-          <span class="text-muted">ملغاة</span>
+          
+          <span>#4923 - مستش  - بحري</span>
+          <span class="text-success">  </span>
         </div>
       </div>
 

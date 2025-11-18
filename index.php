@@ -46,21 +46,7 @@ if ($user_id) {
               <span
                 class="position-absolute top-0 start-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
-              <?php foreach($notifs as $notif){ 
-                echo"<li class='dropdown-item text-danger fw-bold'
-                🚨 ".$notif."
-                <br><small><a href='تفاصيل-الطلب.html'>عرض التفاصيل</a></small>
-              </li>";
-              }
-                ?>
-              
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li class="dropdown-item text-muted">لا توجد إشعارات جديدة</li>
-            </ul>
-        
+           
 
            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
   <?php if (!empty($notifs)): ?>
@@ -99,8 +85,8 @@ if ($user_id) {
         <div class="col-md-6 text-center text-md-start">
           <h1>تبرعك حياة<br>لباقي البشر</h1>
           <p>انضم إلى الآلاف الذين ساهموا بدمائهم في إنقاذ الأرواح.</p>
-          <a href="Templates/Forms/donor_form.html" class="btn btn-red me-2">طلب دم</a>
-          <a href="Templates/Forms/donor_form.html" class="btn btn-outline-danger">سجل كمتبرع</a>
+          <a href="Templates/Forms/donor_form.php" class="btn btn-red me-2">طلب دم</a>
+          <a href="Templates/Forms/donor_form.php" class="btn btn-outline-danger">سجل كمتبرع</a>
         </div>
         <div class="col-md-6 text-center mt-4 mt-md-0">
           <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" width="240" alt="تبرع بالدم">

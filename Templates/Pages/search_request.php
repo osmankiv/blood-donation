@@ -44,6 +44,7 @@ $result = $stmt->get_result();
     </head>
 
     <body>
+        <?php include "../../public/header.php"?>
         <div class="container py-5">
             <h2 class="mb-4 text-center text-danger">البحث عن طلبات التبرع بالدم</h2>
 

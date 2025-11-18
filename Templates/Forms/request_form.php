@@ -1,3 +1,10 @@
+<?php
+if(isset($_GET['success'])&& $_GET['success']===1){
+    echo"done";
+    
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -17,6 +24,7 @@
     </head>
 
     <body>
+        <?php include "../../public/header.php";?>
 
         <div class="form-container">
             <h2>طلب تبرع بالدم</h2>
