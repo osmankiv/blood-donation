@@ -1,7 +1,7 @@
 <?php
-if(isset($_GET['success'])&& $_GET['success']===1){
-    echo"done";
-    
+if(isset($_GET['success'])&& $_GET['success']==1){
+    echo "<script>alert('تم إرسال طلب التبرع بنجاح');</script>";
+
 }
 
 ?>

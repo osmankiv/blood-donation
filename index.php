@@ -3,6 +3,7 @@ session_start();
 require_once 'Core/db.php';
 if(isset($_SESSION['user_id'])){
 $user_id = $_SESSION['user_id'];
+$login = true;
 $notifs = [];
 
 if ($user_id) {
@@ -67,12 +68,16 @@ if ($user_id) {
               الخدمات
             </a>
             <ul class="dropdown-menu text-end">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-hand-holding-medical me-2"></i>تبرع الآن</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-file-medical me-2"></i>طلب دم</a></li>
+              <li><a class="dropdown-item" href="Templates/Pages/search_request.php"><i class="fas fa-hand-holding-medical me-2"></i>تبرع الآن</a></li>
+              <li><a class="dropdown-item" href="Templates/Forms/donor_form.php"><i class="fas fa-file-medical me-2"></i>طلب دم</a></li>
             </ul>
           </li>
           <li class="nav-item">
+            <?php if(isset( $login)){ ?>
+            <a href="Templates/Pages/profile.php" class="btn btn-red">لوحة المستخدم</a>
+            <?php } else{ ?>
             <a href="Templates/Forms/login.html" class="btn btn-outline-danger">دخول / تسجيل</a>
+            <?php } ?>
           </li>
         </ul>
       </div>

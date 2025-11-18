@@ -4,7 +4,7 @@ $city = $_GET['city'] ?? '';
 $blood_type = $_GET['blood_type'] ?? '';
 $status = $_GET['status'] ?? '';
 
-$query = "SELECT * FROM blood_requests WHERE 1=1";
+$query = "SELECT * FROM blood_requests  ";
 $params = [];
 $types = "";
 
