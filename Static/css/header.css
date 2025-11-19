@@ -1,9 +1,19 @@
+
+
+.p{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
 .nav-links {
-    position:relative;
+    z-index: 1;
+    position:absolute;
     display: block;
     justify-content: center;
     gap: 15px;
     margin-bottom: 20%;
+    height: 10%;
 
 }
 
@@ -20,4 +30,27 @@
 .nav-links a:hover {
     background-color: #d62828;
     color: white;
+}
+/* الأنماط الافتراضية (الوضع الفاتح) */
+body {
+    background-color: #ffffff;
+    /* خلفية بيضاء */
+    color: #333333;
+    /* نص داكن */
+    transition: background-color 0.3s, color 0.3s;
+    /* انتقال سلس */
+}
+
+/* الأنماط الخاصة بالوضع الداكن */
+body.dark-mode {
+    background-color: #1e1e1e;
+    /* خلفية داكنة */
+    color: #f0f0f0;
+    /* نص فاتح */
+}
+
+/* يجب عليك أيضاً تحديث ألوان العناصر الأخرى (مثل الروابط، الأزرار، البطاقات) */
+.dark-mode a {
+    color: #90caf9;
+    /* لون الروابط في الوضع الداكن */
 }

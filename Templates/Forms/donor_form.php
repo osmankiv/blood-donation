@@ -1,6 +1,5 @@
 <?php 
 include_once "../../Core/db.php";
-include "../../public/header.php";
 
 // رسالة حالة التسجيل
 $status_message = "";
@@ -145,13 +144,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register_donor'])) {
         }
     </style>
 </head>
+<?php  include "../../public/header.php";?>
 
 <body>
 
     <div class="form-container">
         <h2>سجل كمتبرع</h2>
         
-        <?php if (!empty($status_message)): ?>
+        <?php 
+        
+        if (!empty($status_message)): ?>
+
             <p class="status-message <?php echo $status_class; ?>">
                 <?php echo $status_message; ?>
             </p>

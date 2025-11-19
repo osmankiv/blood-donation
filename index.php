@@ -180,7 +180,7 @@ if ($user_id) {
       <div class="row justify-content-center mt-4">
         <div class="col-md-3">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ministry_of_Health_Sudan_logo.png/200px-Ministry_of_Health_Sudan_logo.png"
+            src="images/OIP.webp"
             alt="وزارة الصحة" class="img-fluid" />
           <p class="mt-2">وزارة الصحة السودانية</p>
         </div>

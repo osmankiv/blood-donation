@@ -1,3 +1,4 @@
+<?php// include"";?>
 <head>
     <meta charset="UTF-8">
  
@@ -11,3 +12,21 @@
       <a href="#" onclick="toggleDarkMode()">🌓 الوضع الليلي</a>
       <a href="../../public/logout.php">🚪 تسجيل الخروج</a>
     </div>
+
+ 
+        <h2> </h2>
+
+        <?php
+         if (!empty($status_message)): ?>
+            <p class="status-message <?php echo $status_class; ?>">
+                <?php echo $status_message; ?>
+            </p>
+        <?php endif; ?>
+<script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+</script>
+
+</body>
