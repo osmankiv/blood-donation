@@ -2,7 +2,7 @@
 session_start();
 require_once '../../Core/db.php'; 
 
-
+$user_id = $_SESSION['user_id'];
 $hospital_name  = trim($_POST['hospital_name']);
 $city           = trim($_POST['city']);
 $blood_type     = $_POST['blood_type'];
@@ -29,11 +29,11 @@ if ($bags <= 0) {
 //}
 
 if (empty($errors)) {
-   $sql = "INSERT INTO blood_requests (hospital_name, city, blood_type, bags, contact_number, notes, urgency)
-        VALUES (?, ?, ?, ?, ?, ?, ?)";
+   $sql = "INSERT INTO blood_requests (user_id,hospital_name, city, blood_type, bags, contact_number, notes, urgency)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssisss", $hospital_name, $city, $blood_type, $bags, $contact_number, $notes, $urgency);
+$stmt->bind_param("ssssisss",$user_id, $hospital_name, $city, $blood_type, $bags, $contact_number, $notes, $urgency);
 
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "تم إرسال طلب التبرع بنجاح!";

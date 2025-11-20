@@ -33,12 +33,13 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $request_id = $_GET['id'];
 $confirmation_message = '';
-if(isset($_POST['will_boold'])){
+if(isset($_POST['will_blood'])) {
     // التحقق من التسجيل المسبق
     $check = $conn->prepare("SELECT * FROM donations WHERE user_id = ? AND request_id = ?");
     $check->bind_param("ii", $user_id, $request_id);
     $check->execute();
     $result = $check->get_result();
+  
 
     if ($result->num_rows === 0) {
         $stmt = $conn->prepare("INSERT INTO donations (user_id, request_id, status) VALUES (?, ?, 'pending')");
@@ -50,7 +51,7 @@ if(isset($_POST['will_boold'])){
     }
 }
 
-
+include "../../public/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +184,7 @@ if(isset($_POST['will_boold'])){
 
         <div class="btns">
           <form method="POST" style="display:inline;">
-    <input type="hidden" name="will_boold" value="1">
+    <input type="hidden" name="will_blood" value="1">
     <button class="btn btn-yes" type="submit">
         <i class="fas fa-hand-holding-medical me-1"></i> سأتبرع
     </button>
@@ -192,11 +193,13 @@ if(isset($_POST['will_boold'])){
             <button class="btn btn-no" onclick="alert('شكرًا لك! نتمنى مشاركتك في المستقبل.')"><i class="fas fa-times-circle me-1"></i> لا أستطيع الآن</button>
         </div>
 
-        <div class="confirmation" id="confirmationMessage">
+    <!--    <div class="confirmation" id="confirmationMessage"> -->
             <?php if (!empty($confirmation_message)) {
                 echo $confirmation_message;
-            } ?>
-        </div>
+            }
+            
+            ?>
+       <!-- </div>-->
     </div>
 
  

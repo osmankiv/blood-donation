@@ -42,9 +42,16 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $stmt->close();
-
-$blood_requests= "SELECT id, hospital_name, city, blood_type, bags, contact_number, notes, urgency from blood_requests  WHERE id = ?";
-$result_blood_requests=$conn->prepare($blood_requests);
+$blood_requests=[];
+$query= "SELECT id ,hospital_name, city, blood_type, bags, contact_number, notes, urgency from blood_requests  WHERE user_id = ?";
+$result_blood_requests=$conn->prepare($query);
+$result_blood_requests->bind_param("i", $user_id);
+$result_blood_requests->execute();
+$result = $result_blood_requests->get_result();
+while ($row = $result->fetch_assoc()) {
+    $blood_requests[] = $row;
+}
+$result_blood_requests->close();
 
 
 
@@ -131,12 +138,28 @@ $result_blood_requests=$conn->prepare($blood_requests);
       <div class="card">
         <h4>📋 سجل الطلبات</h4>
         <div class="info-row">
+          <ul>
+         <?php if(empty($donations)){
+         echo" <span>لاتوجد تبرعات مسجلة حتى الآن.</span>";
+         }
+         else{
+            
+          foreach($blood_requests as $blood_request): ?>
+          <li>
+            في مستشفى <?= htmlspecialchars($blood_request['hospital_name']) ; ?>
+          </li>
           
-          <span>#4923 - مستش  - بحري</span>
+            
+        
+    
           <span class="text-success">  </span>
         </div>
       </div>
-
+        <?php endforeach; 
+         }
+          ?>
+        </ul>
+          
       <div class="card">
         <h4>💉 سجل التبرعات</h4>
         <ul>

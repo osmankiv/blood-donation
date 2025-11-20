@@ -91,7 +91,7 @@ if ($user_id) {
         <div class="col-md-6 text-center text-md-start">
           <h1>تبرعك حياة<br>لباقي البشر</h1>
           <p>انضم إلى الآلاف الذين ساهموا بدمائهم في إنقاذ الأرواح.</p>
-          <a href="Templates/Forms/donor_form.php" class="btn btn-red me-2">طلب دم</a>
+          <a href="Templates/Forms/request_form.php" class="btn btn-red me-2">طلب دم</a>
           <a href="Templates/Forms/donor_form.php" class="btn btn-outline-danger">سجل كمتبرع</a>
         </div>
         <div class="col-md-6 text-center mt-4 mt-md-0">

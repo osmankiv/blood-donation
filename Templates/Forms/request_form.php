@@ -1,8 +1,17 @@
 <?php
+$status ="";
 
 if(isset($_GET['success'])&& $_GET['success']==1){
-    echo "<script>alert('تم إرسال طلب التبرع بنجاح');</script>";
-    }
+     $status_message = "✅ تم تسجيل طبك بنجاح! شكراً لك.";
+    $status_class = "success";
+
+} 
+elseif(isset($_GET['success'])){
+    $status_message = "❌ حدث خطأ أثناء التسجيل: " ;
+    $status_class = "error";
+}
+        
+    
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +33,12 @@ if(isset($_GET['success'])&& $_GET['success']==1){
     </head>
 
     <body>
-        <?php include "../../public/header.php";?>
+        <?php include "../../public/header.php";
+        if(!empty($status_message)){
+            echo"$status_message";
+        }
+        ?>
+        
 
         <div class="form-container">
             <h2>طلب تبرع بالدم</h2>

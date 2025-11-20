@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register_donor'])) {
         }
 
         // 5. إعداد استعلام الإدخال باستخدام العبارات المُعدَّة (Prepared Statements)
-        $stmt = $conn->prepare("INSERT INTO donors (full_name, blood_type, city, phone_number) VALUES (?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO donors (full_name, blood_type, city, phone_number,creat_at) VALUES (?, ?, ?, ?,now())");
         
         // ssss تعني أن جميع المعاملات الأربعة هي سلاسل نصية (strings)
         $stmt->bind_param("ssss", $full_name, $blood_type, $city, $phone_number);

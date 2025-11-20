@@ -1,21 +1,57 @@
+/*
+====================================
+===   التعديلات لضمان التوسيط الثابت   ===
+====================================
+*/
 
+.p {
+    /* 1. التثبيت في أعلى الشاشة */
+    position: fixed;
+    /* Fixed position: يجعله ثابتًا عند التمرير */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* يجب أن يغطي العرض الكامل للتوسيط */
+    z-index: 1000;
+    /* قيمة عالية لضمان ظهوره فوق كل محتوى آخر */
 
-.p{
-    display:flex;
+    /* 2. التوسيط الفعلي باستخدام Flexbox */
+    display: flex;
     justify-content: center;
+    /* **المفتاح: توسيط المحتوى أفقياً** */
     align-items: center;
-    position: absolute;
+
+    /* خصائص تصميم إضافية للرأس */
+    height: 70px;
+    /* مثال لارتفاع الرأس */
+    background-color: #ffffff;
+    /* يجب تحديد لون خلفية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* ظل بسيط للفصل عن الصفحة */
 }
+
 .nav-links {
+    /* لم تعد بحاجة لـ position: absolute أو z-index هنا */
     z-index: 1;
-    position:absolute;
-    display: block;
+    /* position: absolute; - تم إلغاؤه */
+
+    /* يجب أن يكون الروابط داخلية flexbox أيضًا لتوزيع الروابط */
+    display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 20%;
-    height: 10%;
 
+    /* تم إلغاء الهوامش السفلية غير الضرورية في هذا السياق */
+    /* margin-bottom: 20%; - تم إلغاؤه */
+    height: auto;
+    /* ترك الارتفاع يتحدد تلقائياً بمحتواه */
 }
+
+/*
+====================================
+===   الأنماط الأخرى (التي لم تتغير)   ===
+====================================
+*/
 
 .nav-links a {
     color: #d62828;
@@ -31,26 +67,20 @@
     background-color: #d62828;
     color: white;
 }
-/* الأنماط الافتراضية (الوضع الفاتح) */
-body {
-    background-color: #ffffff;
-    /* خلفية بيضاء */
-    color: #333333;
-    /* نص داكن */
-    transition: background-color 0.3s, color 0.3s;
-    /* انتقال سلس */
-}
 
-/* الأنماط الخاصة بالوضع الداكن */
-body.dark-mode {
+/* الوضع الداكن - لضمان أن الرأس يتغير أيضًا */
+body.dark-mode .p {
     background-color: #1e1e1e;
-    /* خلفية داكنة */
-    color: #f0f0f0;
-    /* نص فاتح */
+    /* لون خلفية داكن للرأس في الوضع الداكن */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
-/* يجب عليك أيضاً تحديث ألوان العناصر الأخرى (مثل الروابط، الأزرار، البطاقات) */
-.dark-mode a {
+body.dark-mode .nav-links a {
     color: #90caf9;
-    /* لون الروابط في الوضع الداكن */
+    border-color: #90caf9;
+}
+
+body.dark-mode .nav-links a:hover {
+    background-color: #90caf9;
+    color: #1e1e1e;
 }
