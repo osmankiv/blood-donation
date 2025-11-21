@@ -77,7 +77,7 @@ if ($user_id) {
             <?php if(isset( $login)){ ?>
             <a href="Templates/Pages/profile.php" class="btn btn-red">لوحة المستخدم</a>
             <?php } else{ ?>
-            <a href="Templates/Forms/login.html" class="btn btn-outline-danger">دخول / تسجيل</a>
+            <a href="Templates/Forms/login.php" class="btn btn-outline-danger">دخول / تسجيل</a>
             <?php } ?>
           </li>
         </ul>

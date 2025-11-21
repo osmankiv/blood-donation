@@ -1,4 +1,12 @@
-<?php// include"";?>
+<?php if (empty($_SESSION['user_id'])): 
+    header("Location: ../Forms/login.php?status=unauthorized");
+    $status_message = "يرجى تسجيل الدخول للوصول إلى هذه الصفحة.";
+    $status_class = "error";
+
+     exit; 
+
+  endif
+  ?>
 <head>
     <meta charset="UTF-8">
  

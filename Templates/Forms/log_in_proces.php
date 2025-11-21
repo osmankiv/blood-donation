@@ -28,11 +28,11 @@ if ($result->num_rows === 1) {
         header("Location:../Pages/profile.php?message=تم تسجيل الدخول بنجاح");
         exit;
     } else {
-                header("Location:login.html?message=كلمة المرور غير صحيحة");
+                header("Location:login.php?message=كلمة المرور غير صحيحة");
 
     }
 } else {
-                header("Location:login.html?message=لا يوجد حساب مطابق للمعرف المدخل");
+                header("Location:login.php?message=لا يوجد حساب مطابق للمعرف المدخل");
   
 }
 

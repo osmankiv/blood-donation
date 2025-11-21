@@ -3,7 +3,7 @@ session_start();
 require_once '../../Core/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../Forms/login.html");
+    header("Location: ../Forms/login.php");
     exit;
 }
 

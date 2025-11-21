@@ -61,7 +61,7 @@ if (empty($errors)) {
         $_SESSION['welcome_message'] = "مرحباً بك يا $name، تم إنشاء حسابك بنجاح!";
 
        
-        header("Location: login.html?message= تم إنشاء حسابك بنجاح!");
+        header("Location: login.php?message= تم إنشاء حسابك بنجاح!");
         exit;
     } else {
         $errors[] = "حدث خطأ أثناء التسجيل: " . $stmt->error;
