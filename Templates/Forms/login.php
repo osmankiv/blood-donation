@@ -14,7 +14,18 @@
 
                 <div class="login-container">
                         <h2>تسجيل الدخول</h2>
+                                                
+                        <?php
+                         session_start(); 
                         
+                        if (isset($_GET['message'])) {
+                            $message = htmlspecialchars($_GET['message']);
+                            
+                            $class = strpos($message, 'بنجاح') !== false ? 'success' : 'error';
+                            
+                            echo "<p class='status-message $class'>$message</p>";
+                        }
+                        ?>
 
                         <form action="log_in_proces.php" method="post">
                                 <input type="text" name="identifier" placeholder="رقم الهاتف أو البريد الإلكتروني"
