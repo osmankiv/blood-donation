@@ -27,7 +27,8 @@ $request = $result->fetch_assoc();
 
 // تأكد من أن المستخدم مسجل دخول
 if (!isset($_SESSION['user_id'])) {
-    die('يجب تسجيل الدخول أولاً');
+    header('Location: ../Forms/login.php');
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];

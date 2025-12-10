@@ -41,6 +41,7 @@ if ($user_id) {
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
           <li class="nav-item dropdown">
+             <?php if(isset( $login)){ ?>
             <a class="nav-link position-relative" href="#" id="notifDropdown" data-bs-toggle="dropdown"
               aria-expanded="false">
               <i class="fas fa-bell fa-lg"></i>
@@ -50,6 +51,7 @@ if ($user_id) {
            
 
            <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="notifDropdown">
+            
   <?php if (!empty($notifs)): ?>
     <?php foreach ($notifs as $n): ?>
       <li class="dropdown-item text-danger fw-bold">
@@ -62,6 +64,7 @@ if ($user_id) {
     <li class="dropdown-item text-muted">لا توجد إشعارات جديدة</li>
   <?php endif; ?>
 </ul>
+<?php } ?>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown">
